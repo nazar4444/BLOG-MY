@@ -39,6 +39,7 @@ header img {
 	font-weight: bold;
 	color: #b37c00;
 	text-decoration: none;
+
 }
 
 .navbar-menu a:after{
@@ -54,7 +55,7 @@ header img {
 }
 
 .navbar-post{
-	padding: 10px;
+	padding: 15px;
 	background-color: #ffffff5c;
 	width: 30%;
 }
@@ -87,8 +88,11 @@ main {
     margin: 0 25px 50px 25px;
     padding: 20px;
     width: 350px;
-}
 
+}
+.article-item:hover{
+background:gray;
+}
 .article-item img{
 	max-width: 100%;
 }
@@ -98,5 +102,28 @@ main {
     width: 150px;
     border-radius: 10px;
     padding: 5px 0 5px 15px;
+}
+
+}
+.body:hover{
+	transform: rotate(300deg);
+	animation:aboba 2s ease infinite;
+}
+@keyframes aboba{
+	0% {
+		background:orange;
+		color:green;
+	}
+	17% {
+		background:blue;
+	}
+	50%{
+		background: yellow;
+		color: black;
+	}
+	100%{
+		background: red;
+		color:white;
+	}
 }
 
