@@ -42,7 +42,7 @@ header img {
 }
 
 .navbar-menu {
-	background-color: #ffffff5c;
+	background-color: #be880029;
 	height: 50px;
 	padding: 10px 50px 10px 0;
 }
@@ -63,17 +63,17 @@ header img {
 }
 
 .navbar-title h1{
-	color: #ffffff;
+	color: #b37c00;
 }
 
 .navbar-post{
 	padding: 15px;
-	background-color: #ffffff5c;
+	background-color: #b37c0000;
 	width: 30%;
 }
 
 .navbar-post h2{
-	color: #ffffff;
+	color: #b37c00;
 }
 
 .navbar-post p{
