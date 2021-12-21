@@ -2,6 +2,7 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<title>BLOG</title>
 </head>
 <body>
@@ -28,84 +29,91 @@
 		</div>	
 	</header>
 <main>
-
-	<!-- first row -->
-	<div class="articles">
-
-	    <div class="article-item">
-			<img src="img/mainscreen.jpeg"></img>
-			<h2>Lorem ipsum</h2>
-			<div>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris gravida eros vulputate turpis gravida, at feugiat quam fermentum. Fusce ullamcorper, tellus eu posuere ornare, est quam maximus metus, at sagittis.</p>
-			</div>
-			<div class='article-date'>
-				<span>28.01.2009</span>
-			</div>
-	    </div>
-
-	    <div class="article-item">
-			<img src="img/mainscreen.jpeg"></img>
-			<h2>Lorem ipsum</h2>
-			<div>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris gravida eros vulputate turpis gravida, at feugiat quam fermentum. Fusce ullamcorper, tellus eu posuere ornare, est quam maximus metus, at sagittis.</p>
-			</div>
-			<div class='article-date'>
-				<span>28.01.2009</span>
-			</div>
-	    </div>
-
-	    <div class="article-item">
-			<img src="img/mainscreen.jpeg"></img>
-			<h2>Lorem ipsum</h2>
-			<div>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris gravida eros vulputate turpis gravida, at feugiat quam fermentum. Fusce ullamcorper, tellus eu posuere ornare, est quam maximus metus, at sagittis.</p>
-			</div>
-			<div class='article-date'>
-				<span>28.01.2009</span>
-			</div>
-	    </div>
-	</div>
-
-	<!-- second row -->
-	<div class="articles">
-	    <div class="article-item">
-			<img src="img/mainscreen.jpeg"></img>
-			<h2>Lorem ipsum</h2>
-			<div>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris gravida eros vulputate turpis gravida, at feugiat quam fermentum. Fusce ullamcorper, tellus eu posuere ornare, est quam maximus metus, at sagittis.</p>
-			</div>
-			<div class='article-date'>
-				<span>28.01.2009</span>
-			</div>
-	    </div>
-
-	    <div class="article-item">
-			<img src="img/mainscreen.jpeg"></img>
-			<h2>Lorem ipsum</h2>
-			<div>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris gravida eros vulputate turpis gravida, at feugiat quam fermentum. Fusce ullamcorper, tellus eu posuere ornare, est quam maximus metus, at sagittis.</p>
-			</div>
-			<div class='article-date'>
-				<span>28.01.2009</span>
-			</div>
-	    </div>
-
-	    <div class="article-item">
-			<img src="img/mainscreen.jpeg"></img>
-			<h2>Lorem ipsum</h2>
-			<div>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris gravida eros vulputate turpis gravida, at feugiat quam fermentum. Fusce ullamcorper, tellus eu posuere ornare, est quam maximus metus, at sagittis.</p>
-			</div>
-			<div class='article-date'>
-				<span>28.01.2009</span>
-			</div>
-	    </div>
-
-	</div>
+	<div id="articles"></div>
 </main>
 <footer>
 	
 </footer>
-<script src='js/main.js'></script>
+
+<script type="text/javascript">
+
+// переменные и их обьявление JavaScript
+// массивы и словари
+// цикл for
+// jquery $('.'), $('#'), .append(), .find(), .last()
+// форматирование строк JavaScript
+// 
+
+// словарь
+// {
+// 	'ключ': 'значение',
+// 	'ключ1': 'значение1',
+// 	'ключ2': 'значение2',
+// }
+
+// массив 
+// [1, 2, 3, 4]
+
+var articles = [
+	{
+		'imgSrc': 'https://content.rozetka.com.ua/goods/images/big/12274956.jpg',
+		'articleTitle': 'HyperX Pulsefire FPS Pro RGB USB Black',
+		'articlePrice': '1499'
+	},
+	{
+		'imgSrc': 'https://content1.rozetka.com.ua/goods/images/big/12835498.jpg',
+		'articleTitle': 'HyperX Pulsefire Core USB Black',
+		'articlePrice': '849'
+	},
+	{
+		'imgSrc': 'https://content2.rozetka.com.ua/goods/images/big/22078412.jpg',
+		'articleTitle': 'HyperX Pulsefire Raid RGB USB Black',
+		'articlePrice': '1199'
+	}
+]
+
+
+for (let i = 0; i < articles.length; i++){
+
+	// ищем последнюю существующую линию состоящую из 3 карточек продукта
+	var lastArticlesRow = $('.articles-row');
+
+	// карточки в найденой перед этом линии продуктов
+	var articlesInRow = lastArticlesRow?.find('.article-item');
+
+    // если линии не существует либо линия существует и в ней уже
+    // есть 3 карточки, тогда добавляем новую линию для дальнейшего
+    // добавления в нее карточек продуктов
+	if (lastArticlesRow.length === 0 || articlesInRow.length % 3 === 0) {
+		$('#articles').append('<div class="articles-row"></div>');
+	}
+	
+	// ищем только что добавленую линию для дальнейшего добавления карточек в нее
+	var currentArticleRow = $('.articles-row').last();
+
+	// берем определенную карточку из массива всех карточек
+	var currentArticle = articles[i];
+
+	// добавляем код карточки в конец актуальной линии карточек
+	currentArticleRow.append(`
+	    <div class="article-item">
+			<img style="max-height:350px" src="${currentArticle.imgSrc}"></img>
+			<h2>${currentArticle.articleTitle}</h2>
+			<div>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris gravida eros vulputate turpis gravida, at feugiat quam fermentum. Fusce ullamcorper, tellus eu posuere ornare, est quam maximus metus, at sagittis.</p>
+			</div>
+			<div>
+				<span style="font-weight: bold; font-size:30px">${currentArticle.articlePrice} грн</span>
+				<bottom style="padding: 15px;
+							   background-color: #5bb10d;
+							   border-radius: 10px;
+							   color: #ffffff;"
+			    >Купить</bottom>
+			</div>
+	    </div>
+	`);
+}
+
+</script>
 </body>
 </html>

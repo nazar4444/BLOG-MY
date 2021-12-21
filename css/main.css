@@ -87,7 +87,7 @@ main {
 	margin: 50px auto 0 auto;
 }
 
-.articles {
+.articles-row {
     display: flex;
     flex-shrink: 0;
     justify-content: space-between;
